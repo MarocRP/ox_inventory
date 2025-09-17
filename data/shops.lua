@@ -21,6 +21,7 @@ return {
 			{ name = 'lollipop_purple', price = 10 },
 			{ name = 'lollipop_yellow', price = 10 },
 			{ name = 'lollipop_blue', price = 10 },
+			{ name = 'outfit_bag', price = 500 },
 			--[[{ name = 'payment_terminal', price = 10, metadata = {jobHash = 'medinaburger', label = 'Medina Burger Terminal'} },
 			{ name = 'payment_terminal', price = 10, metadata = {jobHash = 'blackpan', label = 'Black Pan Terminal'} },
 			{ name = 'payment_terminal', price = 10, metadata = {jobHash = 'carrion', label = 'Cafe Carrion Terminal'} },
@@ -64,7 +65,7 @@ return {
 		}--]]
 	},
 	PoliceArmoury = {
-		name = 'DGSN Armory',
+		name = 'LSPD Armory',
 		groups = shared.police,
 		inventory = {
 			--{ name = 'bodycam', price = 10, grade = 8 },
@@ -95,13 +96,13 @@ return {
 			{ name = 'ammo-shotgun', price = 2, grade = 8 },
 			{ name = 'ammo-rifle', price = 3, grade = 8 },
 			{ name = 'WEAPON_NIGHTSTICK', price = 100, grade = 8 },
-			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'DGSN'}, grade = 8 },
-			{ name = 'WEAPON_PISTOL', price = 1500, metadata = { registered = true, serial = 'DGSN' }, grade = 8 },
-			{ name = 'WEAPON_SMG', price = 2000, metadata = { registered = true, serial = 'DGSN' }, grade = 8 },
-			{ name = 'WEAPON_PUMPSHOTGUN', price = 2500, metadata = { registered = true, serial = 'DGSN' }, grade = 8 },
-			{ name = 'WEAPON_CARBINERIFLE', price = 3000, metadata = { registered = true, serial = 'DGSN' }, grade = 8 },
+			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'LSPD'}, grade = 8 },
+			{ name = 'WEAPON_PISTOL', price = 1500, metadata = { registered = true, serial = 'LSPD' }, grade = 8 },
+			{ name = 'WEAPON_SMG', price = 2000, metadata = { registered = true, serial = 'LSPD' }, grade = 8 },
+			{ name = 'WEAPON_PUMPSHOTGUN', price = 2500, metadata = { registered = true, serial = 'LSPD' }, grade = 8 },
+			{ name = 'WEAPON_CARBINERIFLE', price = 3000, metadata = { registered = true, serial = 'LSPD' }, grade = 8 },
 		}, locations = {
-			vec3(-306.11, -1061.20, 28.34),
+			vec3(462.74, -996.23, 30.71),
 		}
 		--[[targets = {
             {
@@ -113,7 +114,7 @@ return {
 		}--]]
 	},
 	CHUShop = {
-		name = 'CHU Shop',
+		name = 'LSMC Admin Shop',
 		groups = shared.ambulance,
 		inventory = {
 			{ name = 'chu_visitor_pass', price = 5, grade = 4 },
@@ -132,7 +133,7 @@ return {
 	ChemicalStore = {
 		name = 'Chemical Supply Store',
         blip = {id = 499, colour = 69, scale = 0.5},
-		groups = {['miner'] = 0, ['chillspot'] = 0, ['black'] = 0, ['gang1'] = 0, ['gang2'] = 0, ['gang3'] = 0, ['gang4'] = 0, ['gang5'] = 0, ['gang6'] = 0, ['gang7'] = 0, ['gang8'] = 0,},
+		groups = {['miner'] = 0, ['chillspot'] = 0, ['black'] = 0, ['ballas'] = 0, ['vagos'] = 0, ['famillies'] = 0, ['aztecas'] = 0, ['marabunta'] = 0, ['lostmc'] = 0},
 		inventory = {
 			{ name = 'sodium_hydroxide', price = 10 },
 			{ name = 'sulfuric_acid', price = 10 },
@@ -193,6 +194,67 @@ return {
             },
 		}--]]
 	},
+    Petshop = {
+        name = 'Animal Ark Shop',
+        blip = {
+            id = 442, colour = 37, scale = 0.6},
+        inventory = {
+            { name = 'chicken', price = 50000 },
+            { name = 'rabbit', price = 50000 },
+            { name = 'cat1', price = 70000 },
+            { name = 'cat2', price = 70000 },
+            { name = 'cat3', price = 70000 },
+            { name = 'westy1', price = 200000 },
+            { name = 'westy2', price = 200000 },
+            { name = 'westy3', price = 200000 },
+            { name = 'pug1', price = 200000 },
+            { name = 'pug2', price = 200000 },
+            { name = 'pug3', price = 200000 },
+            { name = 'poodle', price = 250000 },
+            { name = 'shepherd1', price = 350000 },
+            { name = 'retriever1', price = 350000 },
+            { name = 'retriever2', price = 350000 },
+            { name = 'retriever3', price = 350000 },
+            { name = 'retriever4', price = 350000 },
+            { name = 'rottweiler1', price = 360000 },
+            { name = 'rottweiler2', price = 360000 },
+            { name = 'rottweiler3', price = 360000 },
+            { name = 'husky1', price = 370000 },
+            { name = 'husky2', price = 370000 },
+            { name = 'husky3', price = 370000 },
+        },
+        locations = {
+			vec3(562.37, 2751.24, 42.88),
+        },
+        -- targets = {
+        --     {
+        --         ped = `S_F_Y_Scrubs_01`,
+        --         scenario = 'CODE_HUMAN_CROSS_ROAD_WAIT',
+        --         loc = vector3(560.3, 2738.18, 41.2),
+        --         heading = 180.12,
+        --     },
+        -- }
+    },
+    Illegalpetshop = {
+        name = 'Black Pet Shop',
+		groups = {['black'] = 0},
+        inventory = {
+            { name = 'mtlion1',	price = 1000000 },
+            { name = 'panther',	price = 1000000 },
+
+        },
+        locations = {
+			vec3(4979.98, -5767.69, 20.88),
+        },
+        -- targets = {
+        --     {
+        --         ped = `IG_AcidLabCook`,
+        --         scenario = 'WORLD_HUMAN_YOGA',
+        --         loc = vector3(414.13, 5572.66, 777.90),
+        --         heading = 269.45,
+        --     },
+        -- }
+    },	
 	BlackShop = {
 		name = 'Black Shop',
 		groups = {['black'] = 0},

@@ -1,5 +1,10 @@
 return {
 	Weapons = {
+		['WEAPON_DIGISCANNER'] = { -- Lunar Heists
+			label = 'Signal Booster',
+			weight = 1200,
+		},
+
 		['WEAPON_HUNTINGRIFLE'] = {
 			label = 'Hunting Rifle',
 			weight = 3300,
@@ -16,11 +21,6 @@ return {
 			label = 'Throw Bag',
 			weight = 100,
 			ammoname = 'AMMO_THROWLINE',
-		},
-
-		['WEAPON_MEGAPHONE'] = {
-			label = 'MegaPhone',
-			weight = 1000,
 		},
 
 		-- ['WEAPON_BATTLERIFLE'] = {
@@ -214,11 +214,11 @@ return {
 		-- 	ammoname = 'ammo-rifle2'
 		-- },
 
-		-- ['WEAPON_CROWBAR'] = {
-		-- 	label = 'Crowbar',
-		-- 	weight = 2500,
-		-- 	durability = 0.1,
-		-- },
+		['WEAPON_CROWBAR'] = {
+			label = 'Crowbar',
+			weight = 2500,
+			durability = 0.1,
+		},
 
 		-- ['WEAPON_DAGGER'] = {
 		-- 	label = 'Dagger',

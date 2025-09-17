@@ -286,7 +286,7 @@ return {
 			event = 'ss_consumable:client:useItem',
 		}
 	},
-	['bong'] = {
+	['cons_bong'] = {
 		label = 'Bong',
 		weight = 0,
 		stack = true,
@@ -294,7 +294,7 @@ return {
 		allowArmed = false,
 		description = 'Bong',
 		client = {
-			image = 'bong.png',
+			image = 'cons_bong.png',
 			event = 'ss_consumable:client:useItem',
 		}
 	},
@@ -304,7 +304,7 @@ return {
         weight = 100,
         stack = true,
         close = true,
-		allowArmed = false,
+		allowArmed = true,
         description = 'Ziptie to tie people up',
         client = {
             event = 'ss_playerinteraction:client:useziptie',
@@ -391,17 +391,6 @@ return {
 			image = 'diving_fill.png',
 		}
 	},
-	['screwdriverset'] = {
-		label = 'Toolkit',
-		weight = 1000,
-		stack = true,
-		close = true,
-		allowArmed = false,
-		description = 'Very useful to screw',
-		client = {
-			image = 'screwdriverset.png',
-		}
-	},
 	['nitrous'] = {
 		label = 'Nitrous',
 		weight = 1000,
@@ -456,18 +445,6 @@ return {
 	},
 	-- Robberies
 	-- Tools
-	['advancedlockpick'] = {
-		label = 'Advanced Lockpick',
-		weight = 160,
-		stack = true,
-		close = true,
-		allowArmed = false,
-		description = 'Expert tool for intricate lock manipulation',
-		client = {
-			image = 'advancedlockpick.png',
-			event = 'lockpicks:UseLockpick',
-		}
-	},
 	['lockpick'] = {
 		label = 'Lockpick',
 		weight = 160,
@@ -480,15 +457,27 @@ return {
 			event = 'lockpicks:UseLockpick',
 		}
 	},
-	['drill'] = {
-		label = 'Drill',
-		weight = 20000,
+	['advancedlockpick'] = {
+		label = 'Advanced Lockpick',
+		weight = 160,
 		stack = true,
 		close = true,
 		allowArmed = false,
-		description = 'The real deal',
+		description = 'Expert tool for intricate lock manipulation',
 		client = {
-			image = 'drill.png',
+			image = 'advancedlockpick.png',
+			event = 'lockpicks:UseLockpick',
+		}
+	},
+	['screwdriverset'] = {
+		label = 'Toolkit',
+		weight = 1000,
+		stack = true,
+		close = true,
+		allowArmed = false,
+		description = 'Very useful to screw',
+		client = {
+			image = 'screwdriverset.png',
 		}
 	},
 	-- ss_houserobbery
@@ -684,140 +673,223 @@ return {
 			image = 'tier3_apple_watch.png',
 		}
 	},
+	-- projectx-oilrigheist
+	['oilrig_device'] = {
+		label = 'Device',
+		weight = 125,
+		stack = false,
+		close = false,
+		description = 'Device for Oil Rig Heist',
+		client = {
+		image = 'oilrig_device.png',
+		}
+	},
+	['oilrig_phone'] = {
+		label = 'Phone',
+		weight = 125,
+		stack = false,
+		close = false,
+		description = 'Phone for Oil Rig Heist',
+		client = {
+		image = 'oilrig_phone.png',
+		}
+	},	
+	['oilrig_bag'] = {
+		label = 'Duffel Bag',
+		weight = 250,
+		stack = false,
+		close = false,
+		description = 'Duffel bag for Oil Rig Heist',
+		client = {
+		image = 'oilrig_bag.png',
+		}
+	},
+	['oilrig_pliers'] = {
+		label = 'Pliers',
+		weight = 125,
+		stack = false,
+		close = false,
+		description = 'Pliers for Oil Rig Heist',
+		client = {
+		image = 'oilrig_pliers.png',
+		}
+	},
+	['oilrig_cratejammer'] = {
+		label = 'Crate Jammer',
+		weight = 300,
+		stack = false,
+		close = false,
+		description = 'Crate Jammer for Oil Rig Heist',
+		client = {
+		image = 'oilrig_cratejammer.png',
+		}
+	},
+	['oilrig_card'] = {
+		label = 'Keycard',
+		weight = 50,
+		stack = false,
+		close = false,
+		description = 'Keycard for Oil Rig Heist',
+		client = {
+		image = 'oilrig_card.png',
+		}
+	},
+	['oilrig_fuse'] = {
+		label = 'Fuse',
+		weight = 150,
+		stack = false,
+		close = false,
+		description = 'Fuse for Oil Rig Heist',
+		client = {
+		image = 'oilrig_fuse.png',
+		}
+	},	
 	-- projectx-atmrobbery
-	['nylonrope'] = {
+	['atm_rope'] = {
 		label = 'Nylon Rope',
-		description = 'The strongest rope material..',
+		description = 'Rope for ATM Robbery',
 		weight = 125,
 		stack = true,
 		close = true,
 		allowArmed = false,
 		client = {
-			image = 'nylonrope.png',
+			image = 'atm_rope.png',
 			event = 'projectx-atmrobbery:client:UseRope',
+		}
+	},
+	['atm_laser_drill'] = {
+		label = 'Laser Drill',
+		description = 'Laser Drill for ATM Robbery',
+		weight = 125,
+		stack = false,
+		close = true,
+		allowArmed = false,
+		client = {
+			image = 'atm_laser_drill.png',
+		}
+	},
+	['atm_gas_tank'] = {
+		label = 'Gas Tank',
+		weight = 200,
+		stack = true,
+		close = false,
+		allowArmed = false,
+		description = 'Gas Tank for ATM Robbery',
+		client = {
+			image = 'atm_gas_tank.png',
+		}
+	},
+	['atm_stolen_card'] = {
+		label = 'Stolen Credit Card',
+		weight = 200,
+		stack = true,
+		close = false,
+		allowArmed = false,
+		description = 'Stolen Credit Card for ATM Robbery',
+		client = {
+			image = 'atm_stolen_card.png',
+		}
+	},
+	['atm_thermite'] = {
+		label = 'Thermite',
+		weight = 200,
+		stack = true,
+		close = false,
+		allowArmed = false,
+		description = 'Thermite for ATM Robbery',
+		client = {
+			image = 'atm_thermite.png',
+		}
+	},
+	['atm_hacking_device'] = {
+		label = 'Hacking Device',
+		weight = 200,
+		stack = true,
+		close = false,
+		allowArmed = false,
+		description = 'Hacking Device for ATM Robbery',
+		client = {
+			image = 'atm_hacking_device.png',
+		}
+	},
+	['atm_blowtorch'] = {
+		label = 'ATM Blow Torch',
+		description = 'Blowtorch for ATM Robbery',
+		weight = 125,
+		stack = false,
+		close = true,
+		allowArmed = false,
+		client = {
+			image = 'atm_blowtorch.png',
 		}
 	},
 	['atmred'] = {
 		label = 'Red ATM',
-		description = 'A console of an automated teller.',
+		description = 'Stolen ATM Machine from ATM Robbery',
 		weight = 350,
 		stack = false,
 		close = true,
 		allowArmed = false,
 		client = {
-			image = 'atmred.png',
+			image = 'atm_red.png',
 			event = 'projectx-atmrobbery:client:UseAtm-Red',
 		}
 	},
 	['atmblue'] = {
 		label = 'Blue ATM',
-		description = 'A console of an automated teller.',
+		description = 'Stolen ATM Machine from ATM Robbery',
 		weight = 350,
 		stack = false,
 		close = true,
 		allowArmed = false,
 		client = {
-			image = 'atmblue.png',
+			image = 'atm_blue.png',
 			event = 'projectx-atmrobbery:client:UseAtm-Blue',
 		}
 	},
 	['atmgreen'] = {
 		label = 'Green ATM',
-		description = 'A console of an automated teller.',
+		description = 'Stolen ATM Machine from ATM Robbery',
 		weight = 350,
 		stack = false,
 		close = true,
 		allowArmed = false,
 		client = {
-			image = 'atmgreen.png',
+			image = 'atm_green.png',
 			event = 'projectx-atmrobbery:client:UseAtm-Green',
 		}
 	},
-	['atmpanel'] = {
+	['atm_panel'] = {
 		label = 'ATM Panel',
-		description = 'A back panel from an automated teller.',
+		description = 'Stolen ATM Panel from ATM Robbery',
 		weight = 125,
 		stack = false,
 		close = true,
 		allowArmed = false,
 		client = {
-			image = 'atmpanel.png',
+			image = 'atm_panel.png',
 		}
 	},
-	['atmcables'] = {
+	['atm_cables'] = {
 		label = 'ATM Cables',
-		description = 'Cables from an automated teller.',
+		description = 'Stolen ATM Cables from ATM Robbery',
 		weight = 125,
 		stack = false,
 		close = true,
 		allowArmed = false,
 		client = {
-			image = 'atmcables.png',
+			image = 'atm_cables.png',
 		}
 	},
-	['atmmotherboard'] = {
+	['atm_motherboard'] = {
 		label = 'ATM Motherboard',
-		description = 'A motherboard from an automated teller.',
+		description = 'Stolen ATM Motherboard from ATM Robbery',
 		weight = 125,
 		stack = false,
 		close = true,
 		allowArmed = false,
 		client = {
-			image = 'atmmotherboard.png',
-		}
-	},
-	['blowtorch'] = {
-		label = 'Blow Torch',
-		description = 'Ooo hot...',
-		weight = 125,
-		stack = false,
-		close = true,
-		allowArmed = false,
-		client = {
-			image = 'blowtorch.png',
-		}
-	},
-	['laserdrill'] = {
-		label = 'Laser Drill',
-		description = 'I wonder what this does...',
-		weight = 125,
-		stack = false,
-		close = true,
-		allowArmed = false,
-		client = {
-			image = 'laserdrill.png',
-		}
-	},
-	-- ['screwdriverset'] = {
-	-- 	label = 'Screwdriverset',
-	-- 	description = 'A Screw driver set',
-	-- 	weight = 50,
-	-- 	close = true,
-	-- 	stack = false,
-	-- 	client = {
-	-- 		image = 'screwdriverset.png',
-	-- 	}
-	-- },
-	['x_gastank'] = {
-		label = 'X Gas Tank',
-		weight = 200,
-		stack = true,
-		close = false,
-		allowArmed = false,
-		description = '????',
-		client = {
-			image = 'x_gastank.png',
-		}
-	},
-	['x_fakecredit'] = {
-		label = 'X Credit Card',
-		weight = 200,
-		stack = true,
-		close = false,
-		allowArmed = false,
-		description = '????',
-		client = {
-			image = 'x_fakecredit.png',
+			image = 'atm_motherboard.png',
 		}
 	},
 	-- ss_drugs
@@ -1095,7 +1167,7 @@ return {
 	-- Money Laundry
 	['money_roll'] = {
 		label = 'Money Roll',
-		weight = 0.5,
+		weight = 0,
 		stack = true,
 		description = 'Medium of exchange and unit of value used in transactions',
 		client = {
@@ -1104,7 +1176,7 @@ return {
 	},
 	['money_unrolled'] = {
 		label = 'Unrolled Money',
-		weight = 0.5,
+		weight = 0,
 		stack = true,
 		description = 'Medium of exchange and unit of value used in transactions',
 		client = {
@@ -1113,7 +1185,7 @@ return {
 	},
 	['money_packed'] = {
 		label = 'Packed Money',
-		weight = 0.5,
+		weight = 0,
 		stack = true,
 		description = 'Medium of exchange and unit of value used in transactions',
 		client = {
@@ -1122,7 +1194,7 @@ return {
 	},
 	['money'] = {
 		label = 'Money',
-		weight = 0.5,
+		weight = 0,
 		stack = true,
 		description = 'Medium of exchange and unit of value used in transactions',
 		client = {
@@ -1462,15 +1534,15 @@ return {
 		}
 	},
 	-- loots
-	['goldbar'] = {
-		label = 'Gold Bar',
-		weight = 7000,
-		stack = true,
-		description = 'Bank Gold Reserve',
-		client = {
-			image = 'gold_bar.png',
-		}
-	},
+	-- ['goldbar'] = { -- Lunar has it
+	-- 	label = 'Gold Bar',
+	-- 	weight = 7000,
+	-- 	stack = true,
+	-- 	description = 'Bank Gold Reserve',
+	-- 	client = {
+	-- 		image = 'gold_bar.png',
+	-- 	}
+	-- },
 	-- ss_hospitaljob
 	--[[['bandage'] = {
 		label = 'Bandage',
@@ -1564,7 +1636,7 @@ return {
 		label = 'Visitor Pass',
 		weight = 100,
 		stack = true,
-		description = 'CHU Visitor Pass',
+		description = 'LSMC Visitor Pass',
 		client = {
 			image = 'chu_visitor_pass.png',
 		}
@@ -1714,18 +1786,22 @@ return {
 		}
 	},
 	-- av_laptop
-	['laptop'] = {
-		label = 'Laptop',
-		weight = 2000,
-		stack = false,
-		close = true,
-		allowArmed = false,
-		description = '',
-		client = {
-			image = 'laptop.png',
-		}
-	},
-	['decrypter'] = {
+	['av_laptop'] = {
+        label = 'Laptop',
+        weight = 2000,
+        stack = false,
+        close = true,
+        description = '',
+        buttons = {
+            {
+                label = "Devices",
+                action = function(slot)
+                    exports['av_laptop']:openContainer(slot)
+                end,
+            }
+        }
+    },
+	['av_decrypter'] = {
 		label = 'Decrypter',
 		weight = 100,
 		stack = true,
@@ -1828,8 +1904,17 @@ return {
 			image = 'cam_jammer.png',
 		}
 	},
+	['dvr'] = {
+		label = 'DVR',
+		weight = 1,
+		stack = true,
+		description = 'Digital Video Recorder',
+		client = {
+			image = 'dvr.png',
+		}
+	},
 	-- av_gangs
-	['spray'] = {
+	['av_spray'] = {
 		label = 'Spray',
 		weight = 1,
 		stack = true,
@@ -1837,17 +1922,17 @@ return {
 		allowArmed = false,
 		description = '',
 		client = {
-			image = 'spray.png',
+			image = 'av_spray.png',
 		}
 	},
-	['spray_remover'] = {
+	['av_spray_remover'] = {
 		label = 'Spray Remover',
 		weight = 1,
 		stack = true,
 		close = true,
 		description = '',
 		client = {
-			image = 'spray_remover.png',
+			image = 'av_spray_remover.png',
 		}
 	},
 	-- av_racing
@@ -1860,15 +1945,183 @@ return {
 			image = 'racing_receiver.png',
 		}
 	},
-	-- av_cameras
-	['dvr'] = {
-		label = 'DVR',
-		weight = 1,
+	-- lunar_heistcontracts
+	['blue_keycard'] = {
+		label = 'Blue Keycard',
+		weight = 100,
+		stack = false
+	},
+	['purple_keycard'] = {
+		label = 'Purple Keycard',
+		weight = 100,
+		stack = false
+	},
+	['hack_usb'] = {
+		label = 'Phantom USB',
+		weight = 100,
+		stack = false
+	},
+	['hack_card'] = {
+		label = 'Spoofing Card',
+		weight = 100,
+		stack = false
+	},
+	['coins'] = {
+		label = 'Coins',
+		weight = 10,
+	},
+	['painting'] = {
+		label = 'Painting',
+		weight = 100,
+	},
+	['bomb_c4'] = {
+		label = 'C4 Explosive',
+		weight = 3000,
+	},
+	['angle_grinder'] = {
+		label = 'Angle Grinder',
+		weight = 1500,
+	},
+	['contracts_tablet'] = {
+		label = 'Contract Tablet',
+		stack = false,
+		weight = 400,
+	},
+	['classified_docs'] = {
+		label = 'Classified Documents',
+		weight = 100,
+	},
+	['diamond_necklace'] = {
+		label = 'Diamond Necklace',
+		weight = 100,
+	},
+	['diamonds_box'] = {
+		label = 'Diamonds Box',
+		weight = 200,
+	},
+	['luxurious_watch'] = {
+		label = 'Luxurious Watch',
+		weight = 200,
+	},
+	['rare_coins'] = {
+		label = 'Rare Coins',
+		weight = 500,
+	},
+	['diamond_ring'] = {
+		label = 'Diamond Ring',
+		weight = 50,
+	},
+	['thermite'] = {
+		label = 'Thermite',
+		weight = 350,
+	},
+	['gold_bar'] = {
+		label = 'Gold Bar',
+		weight = 500,
+	},
+	['large_drill'] = {
+		label = 'Large Drill',
+		weight = 12500,
 		stack = true,
-		description = 'Digital Video Recorder',
-		client = {
-			image = 'dvr.png',
-		}
+		close = true,
+	},
+	['casino_keycard'] = {
+		label = 'Casino Keycard',
+		weight = 100,
+		stack = false
+	},
+	['small_drill'] = {
+		label = 'Small Drill',
+		weight = 2000,
+		stack = true,
+		close = true,
+	},
+	['explosives'] = {
+		label = 'Explosives',
+		weight = 3000,
+	},
+	['tv'] = {
+		label = 'Television',
+		weight = 12500,
+		stack = true,
+	},
+	['microwave'] = {
+		label = 'Microwave',
+		weight = 7500,
+		stack = true,
+	},
+	['monitor'] = {
+		label = 'Computer Monitor',
+		weight = 5000,
+		stack = true,
+	},
+	['printer'] = {
+		label = 'Printer',
+		weight = 10000,
+		stack = true,
+	},
+	['flat_tv'] = {
+		label = 'Flat Screen TV',
+		weight = 12500,
+		stack = true,
+	},
+	['old_tv'] = {
+		label = 'Old TV',
+		weight = 12500,
+		stack = true,
+	},
+	['dj_deck'] = {
+		label = 'DJ Deck',
+		weight = 7500,
+		stack = true,
+	},
+	['console'] = {
+		label = 'Gaming Console',
+		weight = 3000,
+		stack = true,
+	},
+	['keyboard'] = {
+		label = 'Keyboard',
+		weight = 500,
+		stack = true,
+	},
+	['laptop'] = {
+		label = 'Laptop',
+		weight = 2500,
+		stack = true,
+	},
+	['bong'] = {
+		label = 'Bong',
+		weight = 1000,
+		stack = true,
+	},
+	['meth_bag'] = {
+		label = 'Meth Bag',
+		weight = 50,
+		stack = true,
+	},
+	['coke_brick'] = {
+		label = 'Coke Brick',
+		weight = 200,
+		stack = true,
+	},
+	['weed_brick'] = {
+		label = 'Weed Brick',
+		weight = 200,
+		stack = true,
+	},
+	['pink_diamond'] = {
+		label = 'Pink Diamond',
+		weight = 100,
+	},
+	['rare_tequila'] = {
+		label = 'Rare Tequila',
+		weight = 300,
+	},
+	['plasma_cutter'] = {
+		label = 'Plasma cutter',
+		weight = 1000,
+		stack = true,
 	},
 	-- rcore_casino
 	['casino_chips'] = {
@@ -1907,6 +2160,16 @@ return {
 		client = {
 			anim = {dict = 'cellphone@', clip = 'cellphone_text_read_base'},
 			usetime = 3500
+		}
+	},
+	-- lb-tablet
+	['lb_tablet'] = {
+		label = 'Tablet',
+		weight = 840,
+		stack = false,
+		consume = 0,
+		client = {
+			event = 'tablet:toggleOpen'
 		}
 	},
 	-- ss_vehicleshops
@@ -1975,6 +2238,17 @@ return {
 			event = 'ss_spray:client:removeSpray',
 		},
 	},
+	['outfit_bag'] = {
+		label = 'Outfit Bag',
+		weight = 200,
+		stack = false,
+		close = true,
+		consume = 0,
+		allowArmed = false,
+		client = {
+			export = 'ss_outfitbag.placeBag'
+		}
+	},	
 	-- ss_vehicleKeys
 	['vehiclekey'] = {
 		label = 'Vehicle Key',
@@ -2018,7 +2292,7 @@ return {
 		}
 	},
 	['policebriarmour'] = {
-		label = 'BRI Kevlar',
+		label = 'SWAT Kevlar',
 		weight = 500,
 		stack = false,
 		close = true,
@@ -2077,16 +2351,6 @@ return {
 			image = 'gps_tracker.png',
 		}
     },
-	['mdt'] = {
-		label = ' Police MDT',
-		weight = 200,
-		stack = true,
-		close = true,
-		allowArmed = false,
-		client = {
-			export = 'ss_mdtpolice.openPoliceMDT'
-		}
-	},
 	-- ss_businesses
 	-- CHILLSPOT
 	['tobacco'] = {
@@ -2161,7 +2425,7 @@ return {
 			image = 'lighter.png',
 		}
 	},
-	-- MANAGEM (miner)
+	-- Mine Co (miner)
 	['sledgehammer'] = {
 		label = 'Sledge Hammer',
 		weight = 100,
@@ -2504,7 +2768,7 @@ return {
 			image = 'gold_washed.png',
 		}
 	},
-	['gold_bar'] = {
+	['gold_bar_crafted'] = {
 		label = 'Gold Bar',
 		weight = 100,
 		stack = true,
@@ -2522,7 +2786,7 @@ return {
 			image = 'gold_electronic.png',
 		}
 	},
-	---- Digital Den (digitalden)
+	---- Click Lovers (clicklovers)
 	['phone_body'] = {
 		label = 'Phone Body',
 		weight = 100,
@@ -2703,7 +2967,7 @@ return {
 			image = 'laptop_battery.png',
 		}
 	},
-	---- MAROC BIO (farmer)
+	---- Agri Co (farmer)
 	['apple'] = {
 		label = 'Fresh Apple',
 		weight = 10,
@@ -3650,21 +3914,21 @@ return {
 		},
 	},
 	['ground_beef_patty'] = {
-		label = 'Ground Beef Patty',
+		label = 'Beef Patty',
 		weight = 250,
 		stack = true,
-		description = 'Ground Beef Patty for Burgers',
+		description = 'Beef Patty for Burgers',
 		client = {
 			image = 'ground_beef_patty.png',
 		},
 	},
-	['fried_chicken'] = {
-		label = 'Fried Chicken',
+	['ground_chicken_patty'] = {
+		label = 'Chicken Patty',
 		weight = 250,
 		stack = true,
-		description = 'Fried Chicken',
+		description = 'Chicken Patty for Burgers',
 		client = {
-			image = 'fried_chicken.png',
+			image = 'ground_chicken_patty.png',
 		},
 	},
 	---- Black Pan
@@ -3699,7 +3963,7 @@ return {
 		stack = true,
 		close = true,
 		allowArmed = false,
-		description = 'Onion Rings',
+		description = 'Baked Onion Rings',
 		client = {
 			image = 'onion_rings.png',
 			event = 'ss_consumable:client:useItem',
@@ -3742,15 +4006,6 @@ return {
 			image = 'sliced_onion.png',
 		},
 	},
-	['fried_onion'] = {
-		label = 'Fried Onion',
-		weight = 250,
-		stack = true,
-		description = 'Fried Onion',
-		client = {
-			image = 'fried_onion.png',
-		},
-	},
 	['sliced_mushroom'] = {
 		label = 'Sliced Mushroom',
 		weight = 250,
@@ -3760,13 +4015,13 @@ return {
 			image = 'sliced_mushroom.png',
 		},
 	},
-	['shredded_chicken'] = {
-		label = 'Shredded Chicken',
+	['cooked_ground_chicken'] = {
+		label = 'Cooked Ground Chicken',
 		weight = 250,
 		stack = true,
-		description = 'Shredded Chicken',
+		description = 'Cokked Ground Chicken',
 		client = {
-			image = 'shredded_chicken.png',
+			image = 'cooked_ground_chicken.png',
 		},
 	},
 	['cooked_ground_beef'] = {
@@ -3851,13 +4106,13 @@ return {
 			image = 'sliced_tomato.png',
 		},
 	},
-	['sliced_chicken'] = {
-		label = 'Sliced Chicken',
+	['ground_chicken'] = {
+		label = 'Ground Chicken',
 		weight = 250,
 		stack = true,
-		description = 'Sliced Chicken',
+		description = 'Ground Chicken',
 		client = {
-			image = 'sliced_chicken.png',
+			image = 'ground_chicken.png',
 		},
 	},
 	['ground_beef'] = {
@@ -3879,7 +4134,7 @@ return {
 		}
 	},
 	-- ss_mechanic
-	['toolsbox'] = {
+	['mechanic_toolsbox'] = {
 		label = 'Tools Box',
 		weight = 3000,
 		stack = true,
@@ -3887,11 +4142,11 @@ return {
 		allowArmed = false,
 		description = 'A nice toolbox with stuff to repair your vehicle',
 		client = {
-			image = 'toolsbox.png',
+			image = 'mechanic_toolsbox.png',
 			event = 'ss_mechanic:client:openToolbox',
 		}
 	},
-	['weldingtool'] = {
+	['mechanic_weldingtool'] = {
 		label = 'Welding Tool',
 		weight = 1000,
 		stack = true,
@@ -3899,11 +4154,11 @@ return {
 		allowArmed = false,
 		description = 'A welding tool to repair your vehicle body',
 		client = {
-			image = 'weldingtool.png',
+			image = 'mechanic_weldingtool.png',
 			event = 'ss_mechanic:client:useWeldingTool',
 		}
 	},
-	['platform_tablet'] = {
+	['mechanic_tablet'] = {
 		label = 'Platform Tablet',
 		weight = 500,
 		stack = true,
@@ -3911,7 +4166,7 @@ return {
 		allowArmed = false,
 		description = 'Platform Tablet to customize your vehicle',
 		client = {
-			image = 'platform_tablet.png',
+			image = 'mechanic_tablet.png',
 			event = 'ss_mechanic:client:openPlatformTablet',
 		}
 	},
@@ -3992,7 +4247,7 @@ return {
 		weight = 100,
 		stack = false,
 		close = true,
-		allowArmed = false,
+		allowArmed = true,
 		description = 'Comes in handy when people misbehave. Maybe it can be used for something else?',
 		client = {
             event = 'ss_playerinteraction:client:usecuff',
@@ -4105,6 +4360,16 @@ return {
 		description = 'GSR Kit',
 		client = {
 			image = 'gsrkit.png',
+		}
+	},
+	['boat_ticket'] = {
+		label = 'Boat Ticket',
+		weight = 100,
+		stack = false,
+		close = true,
+		description = 'Boat Ticket',
+		client = {
+			image = 'boat_ticket.png',
 		}
 	},
 	['nightvision'] = {
@@ -4484,7 +4749,7 @@ return {
 		}
 	},
 	['tint_police'] = {
-		label = 'DGSN Weapon Tint',
+		label = 'LSPD Weapon Tint',
 		stack = true,
 		close = true,
 		allowArmed = true,
@@ -4567,4 +4832,534 @@ return {
 			tint = 6
 		}
 	},
+	-- ss_artifactheist
+    ['alien_egg'] = {
+        label = 'Alien Egg',
+        weight = 200,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Alien Egg',
+    },
+    ['ancient_bottle'] = {
+        label = 'Ancient Bottle',
+        weight = 200,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Ancient Bottle',
+    },
+    ['black_skull'] = {
+        label = 'Black Skull',
+        weight = 200,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Black Skull',
+    },
+    ['blue_panther'] = {
+        label = 'Blue Panther',
+        weight = 200,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Blue Panther',
+    },
+    ['pogo_gold'] = {
+        label = 'Golden Pogo',
+        weight = 200,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Golden Pogo',
+    },
+    ['red_diamond'] = {
+        label = 'Red Diamond',
+        weight = 200,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Red Diamond',
+    },
+    ['grinder_machine'] = {
+        label = 'Grinder Machine',
+        weight = 200,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Grinder Machine',
+    },
+	-- ss_pets
+    ['rottweiler1'] = {
+        label = 'Rottweiler',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Black-colored',
+    },
+    ['rottweiler2'] = {
+        label = 'Rottweiler',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Brown-colored',
+    },
+    ['rottweiler3'] = {
+        label = 'Rottweiler',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Dark brown brindle-colored',
+    },
+    ['cat1']        = {
+        label = 'Cat',
+        weight = 1000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Tabby kitten',
+        },
+    ['cat2']        = {
+        label = 'Cat',
+        weight = 1000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Tuxedo kitten',
+        },
+    ['cat3']        = {
+        label = 'Cat',
+        weight = 1000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Orange kitten',
+        },
+    ['chicken']     = {
+        label = 'Chicken',
+        weight = 1000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'What is a chicken doing here?',
+        },
+    ['husky1']      = {
+        label = 'Husky',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Black and white-colored',
+    },
+    ['husky2']      = {
+        label = 'Husky',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Golden and white-colored',
+    },
+    ['husky3']      = {
+        label = 'Husky',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Light-colored',
+    },
+    ['mtlion1']     = {
+        label = 'Mountain lion',
+        weight = 10000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'What is a kitten doing here?',
+        },
+    ['panther']     = {
+        label = 'Panther',
+        weight = 10000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'What is a kitten doing here?',
+        },
+    ['poodle']      = {
+        label = 'Poodle',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'A dog for fancy people',
+        },
+    ['shepherd1']   = {
+        label = 'Border Collie',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Good shepherd dog',
+        },
+    ['pug1']        = {
+        label = 'Pug',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Light-colored',
+        },
+    ['pug2']        = {
+        label = 'Pug',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Gray-colored',
+    },
+    ['pug3']        = {
+        label = 'Pug',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Brown-colored',
+    },
+    ['pug4']        = {
+        label = 'Pug',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Black-colored',
+    },
+    ['retriever1']  = {
+        label = 'Retriever',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Light orange-colored',
+    },
+    ['retriever2']  = {
+        label = 'Retriever',
+        weight = 1000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Black-colored',
+    },
+    ['retriever3']  = {
+        label = 'Retriever',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Light brown-colored',
+    },
+    ['retriever4']  = {
+        label = 'Retriever',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Brown-colored',
+    },
+
+    ['westy1']      = {
+        label = 'West Highland White Terrier',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'White-colored',
+    },
+    ['westy2']      = {
+        label = 'Scottish Terrier',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Brown-colored',
+
+    },
+    ['westy3']      = {
+        label = 'Scottish Terrier',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Black-colored',
+    },
+    ['rabbit']      = {
+        label = 'Rabbit',
+        weight = 5000,
+        stack = true,
+        close = true,
+		allowArmed = false,
+        description = 'Bring some carrots for sure',
+    },
+	-- ss_workshops
+	['engine_s'] = {
+		label = 'Engine S',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Engine S',
+	},
+	['engine_a'] = {
+		label = 'Engine A',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Engine A',
+	},
+	['engine_b'] = {
+		label = 'Engine B',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Engine B',
+	},
+	['engine_c'] = {
+		label = 'Engine C',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Engine C',
+	},
+	['engine_d'] = {
+		label = 'Engine D',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Engine D',
+	},
+	['transmission_s'] = {
+		label = 'Transmission S',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Transmission S',
+	},
+	['transmission_a'] = {
+		label = 'Transmission A',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Transmission A',
+	},
+	['transmission_b'] = {
+		label = 'Transmission B',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Transmission B',
+	},
+	['transmission_c'] = {
+		label = 'Transmission C',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Transmission C',
+	},
+	['transmission_d'] = {
+		label = 'Transmission D',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Transmission D',
+	},
+	['suspension_s'] = {
+		label = 'Suspension S',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Suspension S',
+	},
+	['suspension_a'] = {
+		label = 'Suspension A',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Suspension A',
+	},
+	['suspension_b'] = {
+		label = 'Suspension B',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Suspension B',
+	},
+	['suspension_c'] = {
+		label = 'Suspension C',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Suspension C',
+	},
+	['suspension_d'] = {
+		label = 'Suspension D',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Suspension D',
+	},
+	['brake_s'] = {
+		label = 'Brakes S',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Brakes S',
+	},
+	['brake_a'] = {
+		label = 'Brakes A',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Brakes A',
+	},
+	['brake_b'] = {
+		label = 'Brakes B',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Brakes B',
+	},
+	['brake_c'] = {
+		label = 'Brakes C',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Brakes C',
+	},
+	['brake_d'] = {
+		label = 'Brake D',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Brakes D',
+	},
+	['turbo_s'] = {
+		label = 'Turbo S',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Turbo S',
+	},
+	['turbo_a'] = {
+		label = 'Turbo A',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Turbo A',
+	},
+	['turbo_b'] = {
+		label = 'Turbo B',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Turbo B',
+	},
+	['turbo_c'] = {
+		label = 'Turbo C',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Turbo C',
+	},
+	['turbo_d'] = {
+		label = 'Turbo D',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Turbo D',
+	},
+	['armour_s'] = {
+		label = 'Armour S',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Armour S',
+	},
+	['armour_a'] = {
+		label = 'Armour A',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Armour A',
+	},
+	['armour_b'] = {
+		label = 'Armour B',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Armour B',
+	},
+	['armour_c'] = {
+		label = 'Armour C',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Armour C',
+	},
+	['armour_d'] = {
+		label = 'Armour D',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Armour D',
+	},
+	['engine_repair_kit'] = {
+		label = 'Engine Repair Kit',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Engine Repair Kit',
+	},
+	['body_repair_kit'] = {
+		label = 'Body Repair Kit',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Body Repair Kit',
+	},
+	['cosmetics'] = {
+		label = 'Cosmetics',
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = 'Vehicle Cosmetics',
+	},
+	['mechanic_toolbox'] = {
+		label = 'Toolbox',
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = 'Mechanic Toolbox',
+		client = {
+			export = 'ss_workshops.openToolboxMenu'
+		}
+	},
+	['neons_controller'] = {
+		label = 'Neons Controller',
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = 'Neons Colors Controller',
+		client = {
+			export = 'ss_workshops.openLightsController'
+		}
+	},
+	['mods_list'] = {
+		label = 'Vehicle mods list',
+		weight = 0,
+		stack = false,
+		close = true,
+		description = 'Vehicle Mods List',
+		client = {
+			export = 'ss_workshops.openCosmeticsMenu'
+		}
+	},	
 }
