@@ -36,8 +36,8 @@ function Utils.Raycast(flag, destination, size)
         if result ~= 1 then
             -- DrawLine(playerCoords.x, playerCoords.y, playerCoords.z + 0.5, destination.x, destination.y, destination.z, 0, 0, 255, 255)
             -- DrawLine(playerCoords.x, playerCoords.y, playerCoords.z + 0.5, coords.x, coords.y, coords.z, 255, 0, 0, 255)
-            local entityType
-            if entityHit then entityType = GetEntityType(entityHit) end
+            local entityType = 0
+            if result == 2 and entityHit and entityHit ~= 0 and DoesEntityExist(entityHit) then entityType = GetEntityType(entityHit) end
             if entityHit and entityType ~= 0 then
                 return entityHit, entityType
             end
