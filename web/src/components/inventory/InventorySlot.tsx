@@ -1,8 +1,8 @@
+import { inventoryDesign } from '../../store/inventory';
 import React, { useCallback, useRef } from 'react';
 import { DragSource, Inventory, InventoryType, Slot, SlotWithItem } from '../../typings';
 import { useDrag, useDragDropManager, useDrop } from 'react-dnd';
 import { useAppDispatch } from '../../store';
-import WeightBar from '../utils/WeightBar';
 import { onDrop } from '../../dnd/onDrop';
 import { onBuy } from '../../dnd/onBuy';
 import { Items } from '../../store/items';
@@ -122,6 +122,17 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
 
   const refs = useMergeRefs([connectRef, ref]);
 
+  const durabilityBackground =
+    inventoryType === 'shop' || item.durability === undefined
+      ? 'none'
+      : item.durability >= 75
+        ? inventoryDesign.durabilityGreen
+        : item.durability >= 50
+          ? inventoryDesign.durabilityBlue
+          : item.durability >= 15
+            ? inventoryDesign.durabilityYellow
+            : inventoryDesign.durabilityRed;
+
   return (
     <div
       ref={refs}
@@ -134,10 +145,15 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
             ? 'brightness(80%) grayscale(100%)'
             : undefined,
         opacity: isDragging ? 0.4 : 1.0,
-        backgroundImage: item?.name ? `url(${getItemUrl(item as SlotWithItem)})` : 'none',
-        border: isOver ? '1px dashed rgba(255,255,255,0.4)' : '',
+        backgroundImage: `${item?.name ? `url(${getItemUrl(item as SlotWithItem)})` : 'none'}, ${durabilityBackground}`,
+        backgroundSize: '5vh auto, cover',
+        backgroundPosition: 'center, center',
+        backgroundRepeat: 'no-repeat, no-repeat',
+        border: isOver ? '0.0926vh dashed rgba(255, 255, 255, 0.4)' : '',
+        transition: 'opacity 0.2s ease',
       }}
     >
+      {inventoryType === 'player' && item.slot <= 5 && <div className="inventory-slot-number">{item.slot}</div>}
       {isSlotWithItem(item) && (
         <div
           className="item-slot-wrapper"
@@ -156,10 +172,13 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
         >
           <div
             className={
-              inventoryType === 'player' && item.slot <= 5 ? 'item-hotslot-header-wrapper' : 'item-slot-header-wrapper'
+              inventoryType === 'player' && item.slot <= 5
+                ? 'item-hotslot-header-wrapper'
+                : inventoryType === 'drop'
+                  ? 'item-slot-header-wrapper2'
+                  : 'item-slot-header-wrapper'
             }
           >
-            {inventoryType === 'player' && item.slot <= 5 && <div className="inventory-slot-number">{item.slot}</div>}
             <div className="item-slot-info-wrapper">
               <p>
                 {item.weight > 0
@@ -174,11 +193,13 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
               </p>
               <p>{item.count ? item.count.toLocaleString('en-us') + `x` : ''}</p>
             </div>
+            {!(inventoryType === 'player' && item.slot <= 5) && (
+              <div className="inventory-slot-label-text">
+                {item.metadata?.label || Items[item.name]?.label || item.name}
+              </div>
+            )}
           </div>
           <div>
-            {inventoryType !== 'shop' && item?.durability !== undefined && (
-              <WeightBar percent={item.durability} durability />
-            )}
             {inventoryType === 'shop' && item?.price !== undefined && (
               <>
                 {item?.currency !== 'money' && item.currency !== 'black_money' && item.price > 0 && item.currency ? (
@@ -213,11 +234,6 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
                 )}
               </>
             )}
-            <div className="inventory-slot-label-box">
-              <div className="inventory-slot-label-text">
-                {item.metadata?.label ? item.metadata.label : Items[item.name]?.label || item.name}
-              </div>
-            </div>
           </div>
         </div>
       )}

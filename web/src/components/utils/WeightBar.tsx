@@ -20,7 +20,11 @@ const COLORS = {
   accentColor: [211, 84, 0], // Orange (Oragne)
 };
 
-const WeightBar: React.FC<{ percent: number; durability?: boolean }> = ({ percent, durability }) => {
+const WeightBar: React.FC<{ percent: number; durability?: boolean; circular?: boolean }> = ({
+  percent,
+  durability,
+  circular,
+}) => {
   const color = useMemo(
     () =>
       durability
@@ -33,6 +37,24 @@ const WeightBar: React.FC<{ percent: number; durability?: boolean }> = ({ percen
     [durability, percent]
   );
 
+  if (circular) {
+    const value = Math.max(0, Math.min(Number.isFinite(percent) ? percent : 0, 100));
+    return (
+      <svg className="inventory-weight-ring" viewBox="0 0 36 36" aria-label={`${Math.round(value)}%`}>
+        <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,.1)" strokeWidth="2" />
+        <circle
+          cx="18"
+          cy="18"
+          r="15.9"
+          fill="none"
+          stroke="var(--inventory-accent)"
+          strokeWidth="2"
+          strokeDasharray={`${value} 100`}
+          transform="rotate(-90 18 18)"
+        />
+      </svg>
+    );
+  }
   return (
     <div className={durability ? 'durability-bar' : 'weight-bar'}>
       <div

@@ -49,10 +49,11 @@ interface MenuProps {
   label?: string;
   nested?: boolean;
   children?: React.ReactNode;
+  header?: React.ReactNode;
 }
 
 export const MenuComponent = React.forwardRef<HTMLButtonElement, MenuProps & React.HTMLProps<HTMLButtonElement>>(
-  ({ children, label, ...props }, forwardedRef) => {
+  ({ children, label, header, ...props }, forwardedRef) => {
     const menu = useAppSelector((state) => state.contextMenu);
     const [isOpen, setIsOpen] = useState(false);
     const [hasFocusInside, setHasFocusInside] = useState(false);
@@ -220,6 +221,7 @@ export const MenuComponent = React.forwardRef<HTMLButtonElement, MenuProps & Rea
                       style={{ ...floatingStyles, ...styles }}
                       {...getFloatingProps()}
                     >
+                      {!isNested && header && <div className="context-menu-header">{header}</div>}
                       {children}
                     </div>
                   </FloatingFocusManager>
@@ -236,12 +238,13 @@ export const MenuComponent = React.forwardRef<HTMLButtonElement, MenuProps & Rea
 interface MenuItemProps {
   label: string;
   disabled?: boolean;
+  icon?: React.ReactNode;
 }
 
 export const MenuItem = React.forwardRef<
   HTMLButtonElement,
   MenuItemProps & React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ label, disabled, ...props }, forwardedRef) => {
+>(({ label, disabled, icon, ...props }, forwardedRef) => {
   const menu = useContext(MenuContext);
   const item = useListItem({ label: disabled ? null : label });
   const tree = useFloatingTree();
@@ -267,6 +270,7 @@ export const MenuItem = React.forwardRef<
         },
       })}
     >
+      {icon && <span className="context-action-icon">{icon}</span>}
       {label}
     </button>
   );

@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { getItemUrl, isSlotWithItem } from '../../helpers';
 import useNuiEvent from '../../hooks/useNuiEvent';
 import { Items } from '../../store/items';
-import WeightBar from '../utils/WeightBar';
 import { useAppSelector } from '../../store';
-import { selectLeftInventory } from '../../store/inventory';
+import { selectLeftInventory, inventoryDesign } from '../../store/inventory';
 import { SlotWithItem } from '../../typings';
 import SlideUp from '../utils/transitions/SlideUp';
 
@@ -31,7 +30,7 @@ const InventoryHotbar: React.FC = () => {
           <div
             className="hotbar-item-slot"
             style={{
-              backgroundImage: item?.name ? `url(${getItemUrl(item as SlotWithItem)})` : 'none',
+              backgroundImage: `${item?.name ? `url(${getItemUrl(item as SlotWithItem)})` : 'none'}, ${item.durability === undefined ? 'none' : item.durability >= 75 ? inventoryDesign.durabilityGreen : item.durability >= 50 ? inventoryDesign.durabilityBlue : item.durability >= 15 ? inventoryDesign.durabilityYellow : inventoryDesign.durabilityRed}`,
             }}
             key={`hotbar-${item.slot}`}
           >
@@ -55,7 +54,6 @@ const InventoryHotbar: React.FC = () => {
                   </div>
                 </div>
                 <div>
-                  {item?.durability !== undefined && <WeightBar percent={item.durability} durability />}
                   <div className="inventory-slot-label-box">
                     <div className="inventory-slot-label-text">
                       {item.metadata?.label ? item.metadata.label : Items[item.name]?.label || item.name}

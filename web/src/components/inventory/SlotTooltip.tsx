@@ -2,11 +2,11 @@ import { Inventory, SlotWithItem } from '../../typings';
 import React, { Fragment, useMemo } from 'react';
 import { Items } from '../../store/items';
 import { Locale } from '../../store/locale';
+import Markdown from '../utils/Markdown';
 import { useAppSelector } from '../../store';
 import ClockIcon from '../utils/icons/ClockIcon';
 import { getItemUrl } from '../../helpers';
 import Divider from '../utils/Divider';
-import Markdown from '../utils/Markdown';
 
 const SlotTooltip: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -25,15 +25,34 @@ const SlotTooltip: React.ForwardRefRenderFunction<
     <>
       {!itemData ? (
         <div className="tooltip-wrapper" ref={ref} style={style}>
+          <svg
+            className="poly2"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="12"
+            viewBox="0 0 20 12"
+            fill="none"
+          >
+            <path d="M10.0028 1L19 11.2137H1L10.0028 1Z" fill="#2A2C2B" strokeOpacity="0.1" strokeWidth="0.5" />
+          </svg>
           <div className="tooltip-header-wrapper">
             <p>{item.name}</p>
           </div>
-          <Divider />
         </div>
       ) : (
         <div style={{ ...style }} className="tooltip-wrapper" ref={ref}>
+          <svg
+            className="poly2"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="12"
+            viewBox="0 0 20 12"
+            fill="none"
+          >
+            <path d="M10.0028 1L19 11.2137H1L10.0028 1Z" fill="#2A2C2B" strokeOpacity="0.1" strokeWidth="0.5" />
+          </svg>
           <div className="tooltip-header-wrapper">
-            <p>{item.metadata?.label || itemData.label || item.name}</p>
+            <div className="iName">{item.metadata?.label || itemData.label || item.name}</div>
             {inventoryType === 'crafting' ? (
               <div className="tooltip-crafting-duration">
                 <ClockIcon />
@@ -50,50 +69,52 @@ const SlotTooltip: React.ForwardRefRenderFunction<
             </div>
           )}
           {inventoryType !== 'crafting' ? (
-            <>
+            <div className="tooltipinside">
               {item.durability !== undefined && (
-                <p>
-                  {Locale.ui_durability}: {Math.trunc(item.durability)}
-                </p>
+                <div className="sa">
+                  <span>{Locale.ui_durability}:</span> <p>{Math.trunc(item.durability)}</p>
+                </div>
               )}
               {item.metadata?.ammo !== undefined && (
-                <p>
-                  {Locale.ui_ammo}: {item.metadata.ammo}
-                </p>
+                <div className="sa">
+                  <span>{Locale.ui_ammo}:</span> <p>{item.metadata.ammo}</p>
+                </div>
               )}
               {ammoName && (
-                <p>
-                  {Locale.ammo_type}: {ammoName}
-                </p>
+                <div className="sa">
+                  <span>{Locale.ammo_type}:</span> <p>{ammoName}</p>
+                </div>
               )}
               {item.metadata?.serial && (
-                <p>
-                  {Locale.ui_serial}: {item.metadata.serial}
-                </p>
+                <div className="sa">
+                  <span>{Locale.ui_serial}:</span> <p>{item.metadata.serial}</p>
+                </div>
               )}
               {item.metadata?.components && item.metadata?.components[0] && (
-                <p>
-                  {Locale.ui_components}:{' '}
-                  {(item.metadata?.components).map((component: string, index: number, array: []) =>
-                    index + 1 === array.length ? Items[component]?.label : Items[component]?.label + ', '
-                  )}
-                </p>
+                <div className="sa">
+                  <span>{Locale.ui_components}:</span>{' '}
+                  <p>
+                    {(item.metadata?.components).map((component: string, index: number, array: []) =>
+                      index + 1 === array.length ? Items[component]?.label : Items[component]?.label + ', '
+                    )}
+                  </p>
+                </div>
               )}
               {item.metadata?.weapontint && (
-                <p>
-                  {Locale.ui_tint}: {item.metadata.weapontint}
-                </p>
+                <div className="sa">
+                  <span>{Locale.ui_tint}:</span> <p>{item.metadata.weapontint}</p>
+                </div>
               )}
               {additionalMetadata.map((data: { metadata: string; value: string }, index: number) => (
                 <Fragment key={`metadata-${index}`}>
                   {item.metadata && item.metadata[data.metadata] && (
-                    <p>
-                      {data.value}: {item.metadata[data.metadata]}
-                    </p>
+                    <div className="sa">
+                      <span>{data.value}:</span> <p>{item.metadata[data.metadata]}</p>
+                    </div>
                   )}
                 </Fragment>
               ))}
-            </>
+            </div>
           ) : (
             <div className="tooltip-ingredients">
               {ingredients &&

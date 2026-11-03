@@ -357,6 +357,11 @@ end)
 local Animations = lib.load('data.animations')
 local Items = require 'modules.items.client'
 local usingItem = false
+RegisterNUICallback('getPlayerInfo', function(_, cb)
+    if not invOpen or not PlayerData.loaded then return cb({}) end
+    local info = lib.callback.await('ox_inventory:getPlayerServerDatas', false)
+    cb(invOpen and info or {})
+end)
 
 ---@param data { name: string, label: string, count: number, slot: number, metadata: table<string, any>, weight: number }
 lib.callback.register('ox_inventory:usingItem', function(data, noAnim)
@@ -518,6 +523,12 @@ local function useSlot(slot, noAnim)
 			if data.export then
 				return data.export(data, {name = item.name, slot = item.slot, metadata = item.metadata})
 			elseif data.client.event then -- re-add it, so I don't need to deal with morons taking screenshots of errors when using trigger event
+				if data.client.event == 'ss_vehicleinsurance:client:openFilesHolder' then
+					local ok, ready = pcall(function()
+						return GetResourceState('ss_vehicleinsurance') == 'started' and exports.ss_vehicleinsurance:isReady()
+					end)
+					if not ok or ready ~= true then return end
+				end
 				return TriggerEvent(data.client.event, data, {name = item.name, slot = item.slot, metadata = item.metadata})
 			end
 		end

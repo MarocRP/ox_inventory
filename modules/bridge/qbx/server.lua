@@ -1,6 +1,4 @@
 assert(lib.checkDependency('qbx_core', '1.18.1'), 'qbx_core v1.18.1 or higher is required')
-assert(lib.checkDependency('qbx_vehicles', '1.2.0'), 'qbx_vehicles v1.2.0 or higher is required')
-
 local Inventory = require 'modules.inventory.server'
 local db = require 'modules.mysql.server'
 
@@ -108,8 +106,42 @@ function server.isPlayerBoss(playerId, group, grade)
 end
 
 ---@param entityId number
----@return number | string
+---@return number | string | nil
 ---@diagnostic disable-next-line: duplicate-set-field
 function server.getOwnedVehicleId(entityId)
-    return Entity(entityId).state.vehicleid or exports.qbx_vehicles:GetVehicleIdByPlate(GetVehicleNumberPlateText(entityId))
+    local vehicleId = Entity(entityId).state.vehicleid
+    if vehicleId then return vehicleId end
+    if GetResourceState('ss_playervehicles') ~= 'started' then error('vehicle_service_unavailable', 0) end
+    local ok, vehicles = pcall(function()
+        return exports.ss_playervehicles:fetchEntity({
+            valueType = 'plate',
+            value = GetVehicleNumberPlateText(entityId),
+            normalizePlate = true,
+        })
+    end)
+    if not ok then error('vehicle_service_unavailable', 0) end
+    return vehicles and vehicles[1] and vehicles[1].id
 end
+
+
+lib.callback.register('ox_inventory:getPlayerServerDatas', function(source)
+    local player = QBX:GetPlayer(source)
+    if not player then return end
+    local citizenId = player.PlayerData.citizenid
+    local photo
+    if GetResourceState('ss_lib') == 'started' then
+        local ok, avatar = pcall(function() return exports.ss_lib:GetAvatarBySource(source) end)
+        if ok and type(avatar) == 'string' then photo = avatar end
+    end
+    -- Avatar resolution may yield; re-check identity before returning account data.
+    player = QBX:GetPlayer(source)
+    if not player or player.PlayerData.citizenid ~= citizenId then return end
+    local info = player.PlayerData.charinfo or {}
+    return {
+        name = (('%s %s'):format(info.firstname or '', info.lastname or '')):match('^%s*(.-)%s*$'),
+        source = source,
+        photo = photo,
+        bank = player.Functions.GetMoney('bank') or 0,
+        cash = player.Functions.GetMoney('cash') or 0,
+    }
+end)

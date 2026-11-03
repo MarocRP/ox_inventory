@@ -24,6 +24,7 @@ const initialState: State = {
     maxWeight: 0,
     items: [],
   },
+  activeFilter: null,
   additionalMetadata: new Array(),
   itemAmount: 0,
   shiftPressed: false,
@@ -48,6 +49,9 @@ export const inventorySlice = createSlice({
       }
 
       state.additionalMetadata = [...state.additionalMetadata, ...metadata];
+    },
+    setActiveFilter: (state, action: PayloadAction<string | null>) => {
+      state.activeFilter = action.payload;
     },
     setItemAmount: (state, action: PayloadAction<number>) => {
       state.itemAmount = action.payload;
@@ -86,6 +90,7 @@ export const inventorySlice = createSlice({
 });
 
 export const {
+  setActiveFilter,
   setAdditionalMetadata,
   setItemAmount,
   setShiftPressed,
@@ -102,3 +107,36 @@ export const selectItemAmount = (state: RootState) => state.inventory.itemAmount
 export const selectIsBusy = (state: RootState) => state.inventory.isBusy;
 
 export default inventorySlice.reducer;
+
+export const selectActiveFilter = (state: RootState) => state.inventory.activeFilter;
+
+export const inventoryDesign = {
+  ui_fastSlots: 'Fast Slots',
+  ui_fastSlotsDescription: 'Put your items for fast using.',
+  ui_closeInv: 'Close Inventory',
+  ui_weight: 'Weight',
+  ui_leftInventoryHeader: 'Inventory',
+  ui_leftInventoryDescription: 'Your personal inventory is on the left.',
+  ui_rightInventoryDescription: 'Access nearby players, vehicles, or storages.',
+  allText: 'All',
+  medicItems: ['bandage', 'medkit', 'firstaid', 'painkillers', 'defibrillator'],
+  foodItems: ['burger', 'water', 'sandwich'],
+  theme: 'white',
+  durabilityGreen: 'linear-gradient(-180deg, rgba(46, 204, 113, 0.00) 0%, rgba(46, 204, 113, 0.24) 100%)',
+  durabilityBlue: 'linear-gradient(-180deg, rgba(48, 144, 182, 0.00) 0%, rgba(48, 144, 182, 0.30) 100%)',
+  durabilityYellow: 'linear-gradient(-180deg, rgba(192, 224, 15, 0.00) 0%, rgba(192, 224, 15, 0.24) 100%)',
+  durabilityRed: 'linear-gradient(-180deg, rgba(182, 48, 48, 0.00) 0%, rgba(182, 48, 48, 0.30) 100%)',
+  themes: {
+    white: {
+      backgroundColor1: 'rgba(74, 75, 74, 0)',
+      backgroundColor2: 'rgba(77, 77, 77, 0.05)',
+      backgroundColor3: 'rgba(138, 138, 138, 0.1)',
+      rgbColor1: 'rgba(224, 224, 224, 0.1)',
+      rgbColor2: 'rgba(228, 228, 228, 0.05)',
+      mainColor: '#d6d6d6ff',
+      secondaryColor: '#757575ff',
+      textShadow: 'rgba(226, 226, 226, 0.36)',
+      photoShadowColor: 'rgba(221, 221, 221, 0.3)',
+    },
+  },
+};

@@ -2,6 +2,7 @@ import { Inventory } from './inventory';
 import { Slot } from './slot';
 
 export type State = {
+  activeFilter: string | null;
   leftInventory: Inventory;
   rightInventory: Inventory;
   itemAmount: number;
